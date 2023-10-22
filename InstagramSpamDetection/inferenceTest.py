@@ -2,34 +2,26 @@
 """
 Created on Sun Oct 22 16:10:58 2023
 
-@author: Krishna
+@author: carla
 """
 
-import pickle
-from sklearn.preprocessing import LabelEncoder
 import pandas as pd
-import nltk
-import string
-import numpy as np
-
+from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn import svm
-from sklearn.model_selection import GridSearchCV
-from nltk.stem.porter import PorterStemmer
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.svm import LinearSVC
+import pickle
 
+# Load the classification model from disk and use for predictions
+def classify_utterance(utt):
+    # load the vectorizer
+    loaded_vectorizer = pickle.load(open('TrainedModel/trained_vectorizer.pickle', 'rb'))
 
-#-------------------------------------------------------------------------------------<Loading Model>---|||
-tfidf = TfidfVectorizer()
+    # load the model
+    loaded_model = pickle.load(open('TrainedModel/trained_model.model', 'rb'))
 
-spam_model = pickle.load(open("TrainedModel/trained_model.sav",'rb'))
-
-def check_spam():
-    text = "I'm good"
-    is_spam = spam_model.predict(tfidf.transform([text]))
-    if is_spam == 1:
-        print("text is spam")
-    else:
-        print("text is not spam")
-        
-check_spam()
+    # make a prediction
+    print(loaded_model.predict(loaded_vectorizer.transform([utt])))
+    
+    
+classify_utterance("URGENT! Your Mobile No. was awarded å£2000 try to contact U! Call from Landline 09064019788 BOX42WR29C, 150PPM")

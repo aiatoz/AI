@@ -96,11 +96,18 @@ print("Accuracy:",metrics.accuracy_score(y_test, y_pred)*100)
 
 #-------------------------------------------------------------------------------------<Saving Model>---|||
 import pickle
-filename = 'TrainedModel/trained_model.sav'
-pickle.dump(model, open(filename, 'wb'))
 
 
+'''filename = 'TrainedModel/trained_model.pickle'
+pickle.dump(model, open(filename, 'wb'))'''
 
+# Save the vectorizer
+vec_file = 'TrainedModel/trained_vectorizer.pickle'
+pickle.dump(tfidf, open(vec_file, 'wb'))
+
+# Save the model
+mod_file = 'TrainedModel/trained_model.model'
+pickle.dump(model, open(mod_file, 'wb'))
 
 #-------------------------------------------------------------------------------------<Loading Model>---|||
 '''spam_model = pickle.load(open("TrainedModel/trained_model.sav",'rb'))
