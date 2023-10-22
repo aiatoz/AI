@@ -1,23 +1,10 @@
-#Instagram spam detector
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Oct 22 14:04:37 2023
 
-#Post/Comment/Account Detector
+@author: Krishna
+"""
 
-'''
-Feature extraction for training
-Post
-  -Account Tags
-  -Timing
-  -Hash Tags
-  -Words
-  -Links
-  -Images
-Account
-  -Spam followers
-  -Spam accounts followed
-  -Posts
-  -Spam reports
-  -Comments on other posts
-  -Email accounts (Domains)
-Misc
-  -Similar posts in small time frame
-'''
+#Pretrained classifier - Train the insta data - Selenium
+#Comment detector first - Maintain a DB of usernames
+
